@@ -4,16 +4,21 @@ import Rating from '@mui/material/Rating';
 function MovieGallery({ movieData }) {
     return (
         <div className="movie-gallery">
-            {movieData.map((movie, index) => (
-                <div key={index} className="movie-card">
-                    {movie.movie && <img src={movie.movie} alt={`Movie ${index}`} />}
-                    
-                    {movie.rating && <div className="rating-container">
-                    <Rating
+        {movieData
+            .filter(movie => movie.rating !== null) // Filtrer les films avec une valeur de rating différente de null
+            .map((movie, index) => (
+            <div key={index} className="movie-card">
+                {movie.movie && <img src={movie.movie} alt={`Movie ${index}`} />}
+                
+                <div className="rating-container">
+                <Rating
                     name="simple-controlled"
                     value={movie.rating}
-                    /></div>}
+                    precision={0.5}
+                    readOnly
+                />
                 </div>
+            </div>
             ))}
         </div>
         
