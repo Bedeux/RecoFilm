@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import './App.css';
-import image1 from './images/10568.webp';
+import image1 from './images/10568.jpg';
 import predictionImage from './prediction_image_test.jpg';
 import Rating from '@mui/material/Rating';
 import PredictionPage from './PredictionPage';
 import MovieGallery from './MovieGallery';
+import movies_data from './movies_data.json';
 
 function App() {
   const [currentImage, setCurrentImage] = useState(null); // Image initiale
@@ -69,27 +70,37 @@ function App() {
     setCurrentImage(selectRandomImage());
   }
 
+  const movieId = currentImage ? currentImage.split('/media/')[1].split('.')[0] : null;
+  const movieTitle = movieId ? movies_data[movieId]?.title : 'Unknown Title';
+  const movieDirector = movieId ? movies_data[movieId]?.director : 'Unknown Director';
+
   return (
     <div className="App">
-      {!prediction && (
-        <>
-          <h1>Notez ce film</h1>
-          <p>{imageCount}/10</p>
-          <img src={currentImage || image1} alt="Film" />
-          <div className="rating-container">
-            <Rating
-              name="half-rating"
-              defaultValue={0}
-              precision={0.5}
-              size="large"
-              onChange={(event, newValue) => {
-                handleStarClick(newValue)
-              }}
-              value={null} // To reset each change
-            />
+    {!prediction && (
+      <>
+        <h1>Notez ce film</h1>
+        <p>{imageCount}/10</p>
+        <div className="movie-info">
+          <img src={currentImage || image1} alt="Film" className="movie-image" />
+          <div className="movie-details">
+            <h2 className="movie-title">{movieTitle}</h2>
+            <h4 className="movie-director">Réalisateur: {movieDirector}</h4>
           </div>
-          <button className="gray-button" onClick={() => handleStarClick(null)}>Pas vu</button>
-        </>
+        </div>
+        <div className="rating-container">
+          <Rating
+            name="half-rating"
+            defaultValue={0}
+            precision={0.5}
+            size="large"
+            onChange={(event, newValue) => {
+              handleStarClick(newValue);
+            }}
+            value={null} // To reset each change
+          />
+        </div>
+        <button className="gray-button" onClick={() => handleStarClick(null)}>Pas vu</button>
+      </>
       )}
       {prediction && (
         <>

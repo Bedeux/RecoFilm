@@ -77,3 +77,51 @@ button {
   padding: 10px;
   text-align: center;
 }
+
+
+.movie-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.movie-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.movie-director {
+  font-size: 16px;
+  color: #555;
+  margin: 5px 0 0;
+}
+
+.rating-container {
+  margin-top: 20px;
+}
+
+.gray-button {
+  background-color: #ccc;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.gray-button:hover {
+  background-color: #bbb;
+}
+
+/* Styles pour les liens de streaming */
+.streaming-links {
+  display: flex;
+  flex-direction: row;
+}
+
+/* Styles pour les logos de streaming */
+.streaming-logo {
+  max-width: 5%; /* Ajuster selon vos besoins */
+  margin-top: 20px; /* Marge entre les logos */
+}
