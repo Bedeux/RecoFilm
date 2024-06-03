@@ -9,7 +9,7 @@ const PredictionPage = ({ moviesData }) => {
   const url_prediction = `https://www.allocine.fr/film/fichefilm_gen_cfilm=${prediction}.html`;
   const getImages = require.context('./images', true);
   const images = getImages.keys().map(image => getImages(image));
-  const getLogos = require.context('./streaming_logos', true);
+  const getLogos = require.context('./logos', true);
   const logos = getLogos.keys().map(logo => getLogos(logo));
 
   useEffect(() => {

@@ -125,3 +125,64 @@ button {
   max-width: 5%; /* Ajuster selon vos besoins */
   margin-top: 20px; /* Marge entre les logos */
 }
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Styles pour l'icône de point d'interrogation */
+.info-icon {
+  width: 20px; /* Ajuster selon vos besoins */
+  height: 20px; /* Ajuster selon vos besoins */
+  margin-left: 5px;
+}
+
+/* Styles pour le conteneur d'action */
+.action-container {
+  display: flex;
+  align-items: center;
+  margin-top: 20px; /* Ajuster selon vos besoins */
+}
+
+/* Styles pour le bouton */
+.gray-button {
+  background-color: gray;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-right: 10px; /* Espace entre le bouton et l'icône */
+}
+
+/* Styles pour aligner les étoiles et le texte sur une seule ligne */
+.rating-text {
+  display: flex;
+  align-items: center;
+  margin: 5px 0;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+/* Styles pour le texte du tooltip */
+.tooltiptext {
+  visibility: hidden;
+  background-color: #4d4d4d;
+  color: #fff;
+  text-align: left;
+  padding: 10px;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 1;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  white-space: nowrap; /* Ensure text stays on one line */
+}

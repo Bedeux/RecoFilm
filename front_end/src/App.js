@@ -17,9 +17,11 @@ function App() {
   const [displayedImages, setDisplayedImages] = useState([]); // Tableau pour stocker les images déjà affichées
   const getImages = require.context('./images', true);
   const images = getImages.keys().map(image => getImages(image));
+  const getLogos = require.context('./logos', true);
+  const logos = getLogos.keys().map(logo => getLogos(logo));
 
   const selectRandomImage = () => {
-    if (imageCount < 10) {
+    if (imageCount < 25) {
       const remainingImages = images.filter(img => !displayedImages.includes(img));
       if (remainingImages.length === 0) {
         // Si toutes les images ont été affichées, réinitialiser le tableau des images affichées
@@ -79,7 +81,7 @@ function App() {
     {!prediction && (
       <>
         <h1>Notez ce film</h1>
-        <p>{imageCount}/10</p>
+        <p>{imageCount}/25</p>
         <div className="movie-info">
           <img src={currentImage || image1} alt="Film" className="movie-image" />
           <div className="movie-details">
@@ -100,7 +102,34 @@ function App() {
           />
         </div>
         <button className="gray-button" onClick={() => handleStarClick(null)}>Pas vu</button>
-      </>
+        <div className="tooltip">
+            <img src={logos.find(img => img.includes('interrogation'))} alt="Info"  className="info-icon" />
+            <span className="tooltiptext">
+              <div className="rating-text">
+              
+              <Rating
+                    name="simple-controlled"
+                    value={5.0}
+                    precision={0.5}
+                    readOnly
+                /> Chef d'oeuvre
+              </div>
+              <div className="rating-text">
+                     
+                <Rating name="half-rating-read" value={4} readOnly /> Très bien
+              </div>
+              <div className="rating-text">
+              <Rating name="half-rating-read" value={3} readOnly /> Pas mal
+              </div>
+              <div className="rating-text">
+              <Rating name="half-rating-read" value={2} readOnly /> Pas terrible
+              </div>
+              <div className="rating-text">
+              <Rating name="half-rating-read" value={1} readOnly /> Très mauvais
+              </div>
+            </span>
+        </div>
+        </>
       )}
       {prediction && (
         <>
